@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 
 // routes import
 import userRoutes from "./routes/user.route.js";
+import authRoutes from "./routes/auth.route.js";
 
 dotenv.config();
 
@@ -14,14 +15,15 @@ mongoose
 
 const app = express();
 
+// it is responsible for parsing incoming request with JSON payloads
+// When a client sends a POST request with a JSON payload to your Express server, this middleware intercepts the request, parses the JSON data, and makes it available in req.body for further processing in your route handlers.
+app.use(express.json());
+
 app.listen(7000,() => {
     console.log('Server is running on port 7000');
 });
 
-// test api
-app.get("/test",(req,res)=>{
-    res.json({message : "API is working!"});
-})
 
 // user routes
 app.use("/api/user",userRoutes);
+app.use("/api/auth",authRoutes);
