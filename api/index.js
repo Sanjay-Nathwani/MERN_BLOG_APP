@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 
 // routes import
 import userRoutes from "./routes/user.route.js";
@@ -18,6 +19,9 @@ const app = express();
 // it is responsible for parsing incoming request with JSON payloads
 // When a client sends a POST request with a JSON payload to your Express server, this middleware intercepts the request, parses the JSON data, and makes it available in req.body for further processing in your route handlers.
 app.use(express.json());
+
+//It sets up the middleware to parse cookies attached to incoming requests in your Express.js application. This allows you to access the parsed cookies conveniently through req.cookies in subsequent middleware or route handlers.
+app.use(cookieParser());
 
 app.listen(7000,() => {
     console.log('Server is running on port 7000');
