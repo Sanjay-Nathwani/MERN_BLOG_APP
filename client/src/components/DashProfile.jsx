@@ -21,10 +21,11 @@ import {
 } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
+import {Link} from "react-router-dom";
 
 export default function DashProfile() {
 
-    const {currentUser,error} = useSelector(state=>state.user);
+    const {currentUser,error,loading} = useSelector(state=>state.user);
 
     const filePickerRef = useRef();
     const dispatch = useDispatch();
@@ -234,15 +235,28 @@ export default function DashProfile() {
           placeholder="password"
           onChange={handleChange}
         />
-        <Button type="submit" gradientDuoTone="purpleToBlue" outline>
-          Update
+        <Button type="submit" gradientDuoTone="purpleToBlue" outline disabled={loading || imageFileUploading}>
+          {loading ? "Loading..." : "Update"}
         </Button>
+        {currentUser.isAdmin && (
+          <Link to="/create-post">
+            <Button
+              type="button"
+              gradientDuoTone="purpleToPink"
+              className="w-full"
+            >
+              Create a post
+            </Button>
+          </Link>
+        )}
       </form>
       <div className="text-red-500 flex justify-between mt-5">
         <span className="cursor-pointer" onClick={() => setShowModal(true)}>
           Delete Account
         </span>
-        <span onClick={handleSignout} className="cursor-pointer">Sign Out</span>
+        <span onClick={handleSignout} className="cursor-pointer">
+          Sign Out
+        </span>
       </div>
       {updateUserSuccess && (
         <Alert color="success" className="mt-5">
@@ -276,7 +290,9 @@ export default function DashProfile() {
               <Button color="failure" onClick={handleDeleteUser}>
                 Yes I&apos;m sure
               </Button>
-              <Button color="gray" onClick={() => setShowModal(false)}>No, Cancel</Button>
+              <Button color="gray" onClick={() => setShowModal(false)}>
+                No, Cancel
+              </Button>
             </div>
           </div>
         </Modal.Body>
