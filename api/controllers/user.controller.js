@@ -114,7 +114,6 @@ export const getUsers = async(req,res,next) => {
       totalUsers,
       lastMonthUsers,
     });
-
   } catch (error) {
     next(error);
   }
