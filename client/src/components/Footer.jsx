@@ -23,9 +23,11 @@ export default function FooterComponent() {
             <div>
               <Footer.Title title="About" />
               <Footer.LinkGroup col>
-                <Footer.Link href="#">Projects</Footer.Link>
+                <Footer.Link as={"div"}>
+                  <Link to="/projects">Projects</Link>
+                </Footer.Link>
                 <Footer.Link
-                  href="/about"
+                  href="#"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
