@@ -17,11 +17,12 @@ body{
 
 .post-content p{
     margin-bottom: 0.5rem;
+    font-size: 18px;
 }
 
 .post-content h1{
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: bold;
     font-family: sans-serif;
     margin: 1.5rem 0;
 }
@@ -30,6 +31,7 @@ body{
     font-size: 1.4rem;
     font-family: sans-serif;
     margin: 1.5rem 0;
+    font-weight: 600;
 }
 
 .post-content a{
@@ -44,3 +46,8 @@ body{
 .dark .post-content a {
   color: red;
 }
+
+pre{
+    border-radius: 8px;
+}
+
