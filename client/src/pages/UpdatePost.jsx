@@ -20,7 +20,7 @@ export default function UpdatePost() {
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
   const [imageUploadError, setImageUploadError] = useState(null);
   const [formData, setFormData] = useState({});
-  const [publishError, setPublishError] = useState(null);
+  const [publishError, setPublishError] = useState("");
   const { postId } = useParams();
 
   const navigate = useNavigate();
@@ -150,6 +150,7 @@ export default function UpdatePost() {
     "indent",
     "link",
     "align",
+    "script"
   ];
 
   return (
@@ -166,7 +167,7 @@ export default function UpdatePost() {
             onChange={(e) =>
               setFormData({ ...formData, title: e.target.value })
             }
-            value={formData.title}
+            value={formData?.title}
           />
           <Select
             onChange={(e) =>
