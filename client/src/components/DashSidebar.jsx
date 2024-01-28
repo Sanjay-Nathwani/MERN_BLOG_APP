@@ -1,5 +1,5 @@
 import {Sidebar} from "flowbite-react";
-import {HiArrowSmRight, HiDocumentText, HiOutlineUserGroup, HiUser} from "react-icons/hi";
+import {HiAnnotation, HiArrowSmRight, HiDocumentText, HiOutlineUserGroup, HiUser} from "react-icons/hi";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {useDispatch} from "react-redux";
@@ -56,26 +56,35 @@ export default function DashSidebar() {
             </Sidebar.Item>
           </Link>
           {currentUser.isAdmin && (
-            <Link to="/dashboard?tab=posts">
-              <Sidebar.Item
-                as="div"
-                active={tab === "posts"}
-                icon={HiDocumentText}
-              >
-                Posts
-              </Sidebar.Item>
-            </Link>
-          )}
-          {currentUser.isAdmin && (
-            <Link to="/dashboard?tab=users">
-              <Sidebar.Item
-                as="div"
-                active={tab === "users"}
-                icon={HiOutlineUserGroup}
-              >
-                Users
-              </Sidebar.Item>
-            </Link>
+            <>
+              <Link to="/dashboard?tab=posts">
+                <Sidebar.Item
+                  as="div"
+                  active={tab === "posts"}
+                  icon={HiDocumentText}
+                >
+                  Posts
+                </Sidebar.Item>
+              </Link>
+              <Link to="/dashboard?tab=users">
+                <Sidebar.Item
+                  as="div"
+                  active={tab === "users"}
+                  icon={HiOutlineUserGroup}
+                >
+                  Users
+                </Sidebar.Item>
+              </Link>
+              <Link to="/dashboard?tab=comments">
+                <Sidebar.Item
+                  as="div"
+                  active={tab === "comments"}
+                  icon={HiAnnotation}
+                >
+                  Comments
+                </Sidebar.Item>
+              </Link>
+            </>
           )}
           <Sidebar.Item
             onClick={handleSignout}
