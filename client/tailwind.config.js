@@ -1,7 +1,6 @@
 import flowbitePlugin from "flowbite/plugin";
 import tailwindScrollbar from "tailwind-scrollbar";
 
-
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
