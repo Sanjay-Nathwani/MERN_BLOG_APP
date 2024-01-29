@@ -1,11 +1,12 @@
 import express from "express";
-import { verifyUser } from "../utils/verifyUser.js";
+
 import {
   create,
   deletepost,
   getposts,
   updatepost,
 } from "../controllers/post.controller.js";
+import verifyUser from "../utils/verifyUser.js";
 
 const router = express.Router();
 
