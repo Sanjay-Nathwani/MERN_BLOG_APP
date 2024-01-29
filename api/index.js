@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import path from "path";
 
 // routes import
 import userRoutes from "./routes/user.route.js";
@@ -15,6 +16,8 @@ mongoose
   .connect(process.env.MONGO_URL)
   .then(() => console.log("MongoDB Connected Successfully!"))
   .catch((error) => console.log("Error Connecting MongoDB!",error));
+
+const __dirname = path.resolve();
 
 const app = express();
 
@@ -35,6 +38,12 @@ app.use("/api/user",userRoutes);
 app.use("/api/auth",authRoutes);
 app.use("/api/post",postRoutes);
 app.use("/api/comment",commentRoutes);
+
+app.use(express.static(path.join(__dirname,"/client/dist")));
+
+app.get("*",(req,res) => {
+  res.sendFile(path.join(__dirname,"client","dist","index.html"));
+});
 
 app.use((err,req,res,next) => {
   const statusCode = err.statusCode || 500;
