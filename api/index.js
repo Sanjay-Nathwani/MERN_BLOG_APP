@@ -26,16 +26,16 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-app.listen(7000, () => {
-  console.log("Server is running on port 7000!");
-});
+app.use(express.static(path.join(__dirname, "/client/dist")));
+
+
 
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/post", postRoutes);
 app.use("/api/comment", commentRoutes);
 
-app.use(express.static(path.join(__dirname, "/client/dist")));
+
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
@@ -49,4 +49,8 @@ app.use((err, req, res, next) => {
     statusCode,
     message,
   });
+});
+
+app.listen(7000, () => {
+  console.log("Server is running on port 7000!");
 });
