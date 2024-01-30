@@ -1,12 +1,12 @@
 {
   "name": "mern_blog_app",
   "version": "1.0.0",
-  "description": "",
   "main": "./src/index.js",
+  "type": "module",
   "scripts": {
     "dev": "nodemon",
     "start": "node ./dist/index.js",
-    "build": "npm install"
+    "build": "mkdir dist && xcopy /s src dist && npm install --prefix dist"
   },
   "author": "",
   "license": "ISC",
@@ -20,5 +20,7 @@
     "mongodb": "^6.3.0",
     "mongoose": "^8.1.0",
     "nodemon": "^3.0.3"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }
