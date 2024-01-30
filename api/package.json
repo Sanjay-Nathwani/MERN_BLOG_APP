@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon",
     "start": "node ./dist/index.js",
-    "build": "mkdir -p dist && cp -r src/* dist/ && npm install --prefix dist"
+    "build": "npm install && babel src --out-dir dist"
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +21,10 @@
     "mongoose": "^8.1.0",
     "nodemon": "^3.0.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.23.9",
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9"
+  },
   "description": ""
 }
