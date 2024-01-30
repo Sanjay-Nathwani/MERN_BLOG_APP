@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon",
     "start": "node ./dist/index.js",
-    "build": "mkdir dist && xcopy /s src dist && npm install --prefix dist"
+    "build": "mkdir -p dist && cp -r src/* dist/ && npm install --prefix dist"
   },
   "author": "",
   "license": "ISC",
