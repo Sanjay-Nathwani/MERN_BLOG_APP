@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
-
+const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, "../../client/dist")));
 
 
